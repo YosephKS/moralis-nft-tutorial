@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useContractWrite, usePrepareContractWrite } from "wagmi";
-import ERC20BuyABI from "./abi/ERC20Buy.json";
+import ERC721BuyABI from "./abi/ERC721Buy.json";
 import { ethers } from "ethers";
 
 function App() {
   const [tokenDetails, setTokenDetails] = useState({});
   const { config } = usePrepareContractWrite({
     address: tokenDetails?.contractAddress,
-    abi: ERC20BuyABI,
+    abi: ERC721BuyABI,
     functionName: "buy",
     overrides: {
       value: ethers.utils.parseEther("0.001"),
@@ -21,13 +21,13 @@ function App() {
   /**
    * @description Fetch Token metadata with Moralis EVM API
    */
-  const fetchTokenMetadata = async () => {
+  const fetchNFTMetadata = async () => {
     const res = await (await fetch("http://localhost:4000")).json();
     setTokenDetails(res?.[0]?.token);
   };
 
   useEffect(() => {
-    fetchTokenMetadata();
+    fetchNFTMetadata();
   }, []);
 
   return (

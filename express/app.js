@@ -17,11 +17,14 @@ app.get("/", async (req, res) => {
 
   const chain = EvmChain.GOERLI;
 
-  const addresses = ["0x04a84D36623D6D870C8B876c519eaaFB47A82165"];
+  const address = "0x3358f257E427150c834877f46d6aE09DCdE0Bc6A";
 
-  const response = await Moralis.EvmApi.token.getTokenMetadata({
-    addresses,
+  const tokenId = "0";
+
+  const response = await Moralis.EvmApi.nft.getNFTMetadata({
+    address,
     chain,
+    tokenId,
   });
 
   res.send(response);
