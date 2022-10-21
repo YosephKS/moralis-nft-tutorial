@@ -17,7 +17,7 @@ app.get("/", async (req, res) => {
 
   const chain = EvmChain.GOERLI;
 
-  const address = "0x3358f257E427150c834877f46d6aE09DCdE0Bc6A";
+  const address = "0x2FC8768C532Ca7F567AD87a11bB2F02487D934FA";
 
   const tokenId = "0";
 

@@ -23,7 +23,8 @@ function App() {
    */
   const fetchNFTMetadata = async () => {
     const res = await (await fetch("http://localhost:4000")).json();
-    setTokenDetails(res?.[0]?.token);
+    console.log(res);
+    setTokenDetails(res);
   };
 
   useEffect(() => {
@@ -35,8 +36,7 @@ function App() {
       <ConnectButton accountStatus="address" chainStatus="name" />
       <div>Name: {tokenDetails?.name}</div>
       <div>Symbol: {tokenDetails?.symbol}</div>
-      <div>Decimals: {tokenDetails?.decimals}</div>
-      <div>Contract Address: {tokenDetails?.contractAddress}</div>
+      <div>Contract Address: {tokenDetails?.tokenAddress}</div>
       <div>
         <button disabled={isLoading} onClick={() => write()}>
           Buy Token
